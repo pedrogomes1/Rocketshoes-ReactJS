@@ -6,11 +6,13 @@ import { MdShoppingBasket } from 'react-icons/md'
 
 import { Container, Cart } from './styles';
 
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import logo from '../../assets/logo.svg'
 
-function Header( { cartSize }) {
+export default function Header() {
+
+  const cartSize = useSelector(state => state.cart.length)
   
   return (
     <Container>
@@ -29,9 +31,3 @@ function Header( { cartSize }) {
     </Container>
   );
 }
-
-//Recebo as propriedades de outro componente
-//state.cart .. esse cart é o nome do meu reducer .. vejo lá em rootReducer
-export default connect(state => ({
-  cartSize:state.cart.length,
-}))(Header)
